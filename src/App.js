@@ -8,7 +8,7 @@ import './App.css';
 const AppContainer = styled.div`
   width: 100%;
   height: 100vh;
-  background: black;
+  background: linear-gradient(to bottom, #1a1a2e, #16213e);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,7 +21,7 @@ const AppContainer = styled.div`
 const DecorationCircle = styled(motion.div)`
   position: absolute;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,105,180,0.3) 0%, rgba(255,105,180,0) 70%);
+  background: radial-gradient(circle, rgba(255,182,193,0.3) 0%, rgba(255,182,193,0) 70%);
   filter: blur(8px);
   z-index: 1;
 `;
@@ -53,8 +53,8 @@ const Star = styled.div`
 
 const Title = styled(motion.h1)`
   font-size: clamp(1.8rem, 5vw, 3rem);
-  color: #ff69b4;
-  text-shadow: 0 0 10px rgba(255, 105, 180, 0.7), 0 0 20px rgba(255, 105, 180, 0.5);
+  color: #FFB7B2;
+  text-shadow: 0 0 10px rgba(255, 183, 178, 0.7), 0 0 20px rgba(255, 183, 178, 0.5);
   margin-bottom: 20px;
   margin-top: 20px;
   z-index: 10;
@@ -76,17 +76,18 @@ const Title = styled(motion.h1)`
   }
 `;
 
-// Then in your JSX:
-<Title
-  initial={{ opacity: 0, y: -50 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 1 }}
-  className="responsive-title"
->
- Chúc mừng ngày 8/3, cún iu cụa anhhh!
-</Title>
+const Subtitle = styled(motion.h2)`
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  color: #C7CEEA;
+  text-shadow: 0 0 8px rgba(199, 206, 234, 0.7);
+  margin-bottom: 30px;
+  z-index: 10;
+  font-family: 'Pacifico', cursive;
+  text-align: center;
+  padding: 0 15px;
+`;
 
-const PuppyContainer = styled(motion.div)`
+const CakeContainer = styled(motion.div)`
   width: 100%;
   height: 50vh;
   display: flex;
@@ -104,41 +105,11 @@ const PuppyContainer = styled(motion.div)`
     transform: translateX(-50%);
     width: 60%;
     height: 10px;
-    background: radial-gradient(ellipse at center, rgba(255,105,180,0.3) 0%, rgba(0,0,0,0) 70%);
+    background: radial-gradient(ellipse at center, rgba(255,182,193,0.3) 0%, rgba(0,0,0,0) 70%);
     border-radius: 50%;
     filter: blur(5px);
   }
 `;
-
-// Decorative frame around the puppy
-// const PuppyFrame = styled.div`
-//   position: absolute;
-//   width: 80%;
-//   height: 90%;
-//   border: 2px dashed rgba(255, 105, 180, 0.3);
-//   border-radius: 20px;
-//   z-index: 4;
-//   pointer-events: none;
-  
-//   &:before, &:after {
-//     content: '';
-//     position: absolute;
-//     width: 20px;
-//     height: 20px;
-//     border-radius: 50%;
-//     background-color: rgba(255, 105, 180, 0.5);
-//   }
-  
-//   &:before {
-//     top: -10px;
-//     left: -10px;
-//   }
-  
-//   &:after {
-//     bottom: -10px;
-//     right: -10px;
-//   }
-// `;
 
 function App() {
   const modelViewerRef = useRef(null);
@@ -205,22 +176,29 @@ function App() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        Chúc mừng ngày 8/3, cún iu cụa anhhh!
+        Chúc mừng sinh nhật em gái yêu quý!
       </Title>
       
-      <PuppyContainer
+      <Subtitle
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.3 }}
+      >
+        Và chúc mừng ngày 8/3 tuyệt vời!
+      </Subtitle>
+      
+      <CakeContainer
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1, delay: 0.5 }}
       >
-        {/* <PuppyFrame /> */}
         <model-viewer
           ref={modelViewerRef}
-          src="/toon_cute_dog.glb"
-          alt="A cute cartoon dog"
+          src="/birthday_cake.glb"
+          alt="birthday cake"
           auto-rotate
           camera-controls
-          camera-orbit="0deg 10deg 2m"
+          camera-orbit="10deg 60deg 5m"
           min-camera-orbit="auto auto auto"
           max-camera-orbit="auto auto auto"
           shadow-intensity="1"
@@ -230,7 +208,7 @@ function App() {
           ar-modes="webxr scene-viewer quick-look"
           style={{ width: '100%', height: '90%' }}
         ></model-viewer>
-      </PuppyContainer>
+      </CakeContainer>
       
       <MessageCard marginBottom={true} />
     </AppContainer>

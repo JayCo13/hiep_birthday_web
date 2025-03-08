@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 // In the MessageCard.js file, update the CardContainer styled component:
 
+// Updated colors for a birthday/sister theme
 const CardContainer = styled(motion.div)`
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
@@ -12,7 +13,7 @@ const CardContainer = styled(motion.div)`
   max-width: 550px;
   width: 90%;
   box-shadow: 
-    0 10px 30px rgba(255, 105, 180, 0.3),
+    0 10px 30px rgba(199, 206, 234, 0.4),
     0 0 20px rgba(255, 182, 193, 0.2),
     inset 0 0 10px rgba(255, 255, 255, 0.5);
   margin-top: 20px;
@@ -28,7 +29,7 @@ const CardContainer = styled(motion.div)`
     left: 0;
     right: 0;
     height: 6px;
-    background: linear-gradient(to right, #ff69b4, #ffb6c1, #ff69b4);
+    background: linear-gradient(to right, #C7CEEA, #FFB7B2, #C7CEEA);
     animation: shimmer 3s infinite linear;
     background-size: 200% 100%;
   }
@@ -53,18 +54,27 @@ const CardContainer = styled(motion.div)`
 `;
 
 const MessageWrapper = styled(motion.div)`
-  min-height: 120px;
+  min-height: 100px; // Reduced from 120px
   display: flex;
   align-items: center;
   justify-content: center;
+  
+  @media (max-height: 700px) {
+    min-height: 80px;
+  }
+  
+  @media (max-height: 600px) {
+    min-height: 60px;
+  }
 `;
 
 const Message = styled(motion.p)`
   font-size: 1.3rem;
   line-height: 1.7;
   color: #333;
+  font-weight: 500;
   margin-bottom: 25px;
-  font-family: 'Comic Sans MS', 'Bubblegum Sans', 'Indie Flower', cursive;
+  font-family: 'Montserrat', 'Roboto', 'Be Vietnam Pro', 'Quicksand', sans-serif;
   text-align: center;
   position: relative;
   
@@ -76,6 +86,20 @@ const Message = styled(motion.p)`
   
   @media (max-width: 768px) {
     font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+  }
+  
+  @media (max-height: 700px) {
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+  
+  @media (max-height: 600px) {
+    font-size: 0.9rem;
+    line-height: 1.3;
+    margin-bottom: 5px;
   }
 `;
 
@@ -97,7 +121,7 @@ const ButtonContainer = styled.div`
 `;
 
 const Button = styled(motion.button)`
-  background: linear-gradient(45deg, #ff69b4, #ffb6c1);
+  background: linear-gradient(45deg, #C7CEEA, #FFB7B2);
   border: none;
   border-radius: 50px;
   padding: 14px 28px;
@@ -106,11 +130,21 @@ const Button = styled(motion.button)`
   font-weight: bold;
   cursor: pointer;
   box-shadow: 
-    0 4px 15px rgba(255, 105, 180, 0.4),
+    0 4px 15px rgba(199, 206, 234, 0.5),
     0 0 0 3px rgba(255, 255, 255, 0.2);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  
+  @media (max-height: 700px) {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+  
+  @media (max-height: 600px) {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
   
   &:before {
     content: '';
@@ -181,12 +215,11 @@ const CustomHeart = ({ color }) => (
 );
 
 const messages = [
-    "Gửi đến người phụ nữ tuyệt vời nhất trong cuộc đời anh, em mang đến niềm vui và hạnh phúc cho mỗi ngày.",
-    "Nụ cười của em thắp sáng thế giới của anh, và tình yêu của em lấp đầy trái tim anh bằng sự ấm áp.",
-    "Vào ngày đặc biệt này, anh muốn em biết em có ý nghĩa như thế nào đối với anh.",
-    "Em không chỉ là bạn gái của anh, em là bạn thân nhất của anh, là người bạn tâm giao và là tất cả của anh.",
-    "Anh trân trọng từng khoảnh khắc chúng ta bên nhau, và anh mong muốn tạo ra nhiều kỷ niệm đẹp hơn nữa.",
-    "Chúc mừng Ngày Phụ nữ, tình yêu của anh! Em xứng đáng có được tất cả hạnh phúc trên thế giới này."
+  "Chúc em một ngày lễ trọn vẹn, đầy ý nghĩa với những kỷ niệm đẹp nhất.",
+  "Chúc em luôn vui vẻ, gặp nhiều may mắn, chúc em mỗi ngày đều cười thật tươi.",
+  "Chúc em ngày càng xinh đẹp giỏi giang, chúc em cuộc sống đong đầy bao nhiêu hạnh phúc đều là của em.",
+  "Và đặc biệt là không còn muộn phiền, tiêu cực, mỗi ngày trôi qua đều là ngày hạnh phúc nhất.",
+  "Chúc mừng ngày 08/3 và happy birthday 19+!"
 ];
 
 // Then update the MessageCard component to accept and pass the prop:
@@ -218,14 +251,14 @@ const FinalMessage = styled(motion.div)`
   font-size: 4rem;
   color: white;
   font-family: 'Pacifico', cursive;
-  text-shadow: 0 0 20px #ff69b4, 0 0 30px #ff69b4;
+  text-shadow: 0 0 20px #C7CEEA, 0 0 30px #FFB7B2;
   z-index: 1001;
   position: absolute;
   text-align: center;
   background: rgba(0, 0, 0, 0.7);
   padding: 30px 50px;
   border-radius: 20px;
-  box-shadow: 0 0 50px rgba(255, 105, 180, 0.8);
+  box-shadow: 0 0 50px rgba(199, 206, 234, 0.8);
   backdrop-filter: blur(10px);
   
   @media (max-width: 768px) {
@@ -257,7 +290,7 @@ const MessageCard = ({ marginBottom }) => {
         }
 
         // Create floating hearts effect when button is clicked
-        const heartColors = ['#ff69b4', '#ffb6c1', '#ff1493', '#db7093', '#ffc0cb'];
+        const heartColors = ['#C7CEEA', '#FFB7B2', '#FFDAC1', '#E2F0CB', '#B5EAD7'];
         const newHearts = Array.from({ length: 5 }).map((_, i) => ({
             id: Date.now() + i,
             x: Math.random() * 80 + 10, // Random position
@@ -294,7 +327,7 @@ const MessageCard = ({ marginBottom }) => {
                 }}
             >
                 {Array.from({ length: 10 }).map((_, colIndex) => {
-                    const heartColors = ['#ff69b4', '#ffb6c1', '#ff1493', '#db7093', '#ffc0cb'];
+                    const heartColors = ['#C7CEEA', '#FFB7B2', '#FFDAC1', '#E2F0CB', '#B5EAD7'];
                     const color = heartColors[Math.floor(Math.random() * heartColors.length)];
                     const size = Math.random() * 15 + 25;
 
@@ -404,9 +437,9 @@ const MessageCard = ({ marginBottom }) => {
                         <motion.div
                             animate={{
                                 textShadow: [
-                                    "0 0 20px #ff69b4, 0 0 30px #ff69b4",
-                                    "0 0 40px #ff69b4, 0 0 60px #ff69b4",
-                                    "0 0 20px #ff69b4, 0 0 30px #ff69b4"
+                                    "0 0 20px #C7CEEA, 0 0 30px #FFB7B2",
+                                    "0 0 40px #C7CEEA, 0 0 60px #FFB7B2",
+                                    "0 0 20px #C7CEEA, 0 0 30px #FFB7B2"
                                 ]
                             }}
                             transition={{
@@ -415,7 +448,7 @@ const MessageCard = ({ marginBottom }) => {
                                 repeatType: "reverse"
                             }}
                         >
-                            I Love You
+                            Sinh nhật & 8/3 thật hạnh phúc!
                         </motion.div>
                     </FinalMessage>
                 </FullscreenOverlay>
