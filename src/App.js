@@ -176,7 +176,7 @@ function App() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        Chúc mừng sinh nhật em gái yêu quý!
+        Chúc mừng sinh nhật em gái!
       </Title>
       
       <Subtitle
